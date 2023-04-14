@@ -24,7 +24,7 @@ def get_tile_from_sheet(sheet, tile_index, resolution, scale, background_color):
     tile.set_colorkey(background_color)
     return tile
 
-test_tile = get_tile_from_sheet(sprite_sheet_16x, 172, 16, 5, (255, 0, 255))
+test_tile = get_tile_from_sheet(sprite_sheet_16x, 178, 16, 1, (255, 0, 255))
 
 run = True
 while run:
@@ -33,7 +33,7 @@ while run:
     screen.fill(BACKGROUND_COLOR)
 
     #display image
-    screen.blit(test_tile, (0, 0))
+    screen.blit(test_tile, (0 + 1, 1))
 
     #event handler
     for event in pygame.event.get():
