@@ -11,7 +11,7 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('ASCII RENDERER')
 
-def get_tile_from_sheet(sheet_path, tile_index, resolution, scale, tile_background_color):
+def get_tile_from_sheet(sheet_path, tile_index, resolution, scale, rotation, tile_background_color):
 #Gets the RGB value for background and foreground
     sprite_sheet = Image.open(sheet_path)
     sprite_sheet_pixel = sprite_sheet.load()
@@ -48,10 +48,12 @@ def get_tile_from_sheet(sheet_path, tile_index, resolution, scale, tile_backgrou
 
     #add foreground and background colors
     tile_background.blit(tile_new_color, (0, 0))
-    
-    return tile_background
 
-test_tile = get_tile_from_sheet('resources/ascii_table_16x.png', 178, 16, 1, (170, 255, 238))
+    new = pygame.transform.rotate(tile_background, rotation)
+    
+    return new
+
+test_tile = get_tile_from_sheet('resources/ascii_table_16x.png', 178, 16, 1, 0, (170, 255, 238))
 
 run = True
 while run:
